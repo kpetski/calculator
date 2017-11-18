@@ -8,7 +8,6 @@ class App extends Component {
     this.state = {
       displayValue: '0'
     }
-    this.inputDigit = this.inputDigit.bind(this)
   }
 
   //Handle input button click
@@ -31,6 +30,12 @@ class App extends Component {
     }
   }
 
+  clearDisplay() {
+    this.setState({
+      displayValue: '0'
+    })
+  }
+
   render() {
     return (
       <div id="wrapper">
@@ -39,7 +44,7 @@ class App extends Component {
           <div className="calculator-keypad">
             <div className="input-keys">
               <div className="function-keys">
-                <button className="calculator-key key-clear">AC</button>
+                <button className="calculator-key key-clear" onClick={() => this.clearDisplay()}>AC</button>
                 <button className="calculator-key key-sign">±</button>
                 <button className="calculator-key key-percent">%</button>
               </div>
