@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -36,6 +35,23 @@ class App extends Component {
     })
   }
 
+  toggleSign() {
+    const displayValue = this.state.displayValue
+    this.setState({
+      displayValue: displayValue.charAt(0) === '-' ? displayValue.substr(1) : '-' + displayValue
+    })
+  }
+
+  clickPercent() {
+    const displayValue = this.state.displayValue
+    const value = parseFloat(displayValue)
+
+    this.setState({
+      displayValue: String(value/100)
+    })
+  }
+  
+
   render() {
     return (
       <div id="wrapper">
@@ -45,8 +61,8 @@ class App extends Component {
             <div className="input-keys">
               <div className="function-keys">
                 <button className="calculator-key key-clear" onClick={() => this.clearDisplay()}>AC</button>
-                <button className="calculator-key key-sign">±</button>
-                <button className="calculator-key key-percent">%</button>
+                <button className="calculator-key key-sign" onClick={() => this.toggleSign()}>±</button>
+                <button className="calculator-key key-percent" onClick={() => this.clickPercent()}>%</button>
               </div>
               <div className="digit-keys">
                 <button className="calculator-key key-0" onClick={() => this.inputDigit(0)}>0</button>
