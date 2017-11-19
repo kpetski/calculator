@@ -95,6 +95,7 @@ class App extends Component {
     const { displayValue, waitingForOperand } = this.state
 
     if (waitingForOperand) {
+      console.log('waiting for operand')
       this.setState({
         displayValue: '.',
         waitingForOperand: false
@@ -102,6 +103,7 @@ class App extends Component {
     } else {
       //only add if number doesn't already have a decimal point
       if (displayValue.indexOf('.') === -1) {
+        console.log('not waiting for operand')
         this.setState({
           displayValue: displayValue + '.',
           waitingForOperand: false
@@ -148,27 +150,28 @@ class App extends Component {
       '=': (prevValue, nextValue) => nextValue
     }
 
-    if(value === null) {
+    if (value == null) {
       this.setState({
         value: nextValue
       })
-    } else if(operator) {
+    } else if (operator) {
       const currentValue = value || 0
       const newValue = operations[operator](currentValue, nextValue)
+
       this.setState({
         value: newValue,
         displayValue: String(newValue)
       })
     }
 
-  
-
     this.setState({
       waitingForOperand: true,
-      value: parseFloat(displayValue),
       operator: nextOperator
     })
   }
+
+  
+
 
 
   render() {
