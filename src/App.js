@@ -147,6 +147,7 @@ class App extends Component {
       '*': (prevValue, nextValue) => prevValue * nextValue ,
       '-': (prevValue, nextValue) => prevValue - nextValue ,
       '+': (prevValue, nextValue) => prevValue + nextValue ,
+      '%': (prevValue, nextValue) => prevValue % nextValue ,
       '=': (prevValue, nextValue) => nextValue
     }
 
@@ -186,6 +187,7 @@ class App extends Component {
                 <button className="calculator-key key-clear" onClick={() => this.clearDisplay()}>{this.state.displayValue === '0' ? 'AC' : 'C'}</button>
                 <button className="calculator-key key-sign" onClick={() => this.toggleSign()}>±</button>
                 <button className="calculator-key key-percent" onClick={() => this.clickPercent()}>%</button>
+                <button className="calculator-key key-mod" onClick={() => this.performOperation('%')}>mod</button>
               </div>
               <div className="digit-keys">
                 <button className="calculator-key key-0" onClick={() => this.inputDigit(0)}>0</button>
