@@ -183,7 +183,7 @@ class App extends Component {
          <div className="calculator-keypad">
             <div className="input-keys">
               <div className="function-keys">
-                <button className="calculator-key key-clear" onClick={() => this.clearDisplay()}>AC</button>
+                <button className="calculator-key key-clear" onClick={() => this.clearDisplay()}>{this.state.displayValue === '0' ? 'AC' : 'C'}</button>
                 <button className="calculator-key key-sign" onClick={() => this.toggleSign()}>±</button>
                 <button className="calculator-key key-percent" onClick={() => this.clickPercent()}>%</button>
               </div>
